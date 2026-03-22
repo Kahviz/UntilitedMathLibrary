@@ -1,7 +1,7 @@
 #pragma once
 #include "../UntilitedMath.h"
 
-Vector4 TransformVector(const Vector4& v, const Matrix4x4& m) {
+Vector4 TransformVector4(const Vector4& v, const Matrix4x4& m) {
     __m128 vec = _mm_loadu_ps(v.data_ptr());
 
     __m128 col0 = _mm_set_ps(m(4, 1), m(3, 1), m(2, 1), m(1, 1));
@@ -22,6 +22,30 @@ Vector4 TransformVector(const Vector4& v, const Matrix4x4& m) {
     );
 
     Vector4 output;
+    _mm_storeu_ps(output.data_ptr(), result);
+    return output;
+}
+
+Vector3 TransformVector3(const Vector3& v, const Matrix4x4& m) {
+    __m128 vec = _mm_loadu_ps(v.data_ptr());
+    vec = _mm_and_ps(vec, _mm_set_ps(0.0f, -0.0f, -0.0f, -0.0f));
+
+    __m128 row0 = _mm_loadu_ps(m.data_ptr() + 0);
+    __m128 row1 = _mm_loadu_ps(m.data_ptr() + 4);
+    __m128 row2 = _mm_loadu_ps(m.data_ptr() + 8);
+
+    __m128 result = _mm_add_ps(
+        _mm_add_ps(
+            _mm_mul_ps(_mm_shuffle_ps(vec, vec, _MM_SHUFFLE(0, 0, 0, 0)), row0),
+            _mm_mul_ps(_mm_shuffle_ps(vec, vec, _MM_SHUFFLE(1, 1, 1, 1)), row1)
+        ),
+        _mm_add_ps(
+            _mm_mul_ps(_mm_shuffle_ps(vec, vec, _MM_SHUFFLE(2, 2, 2, 2)), row2),
+            _mm_setzero_ps()
+        )
+    );
+
+    Vector3 output;
     _mm_storeu_ps(output.data_ptr(), result);
     return output;
 }

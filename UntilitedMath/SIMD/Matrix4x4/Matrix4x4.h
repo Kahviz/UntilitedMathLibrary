@@ -74,6 +74,9 @@ public:
         return !(*this == other);
     }
 
+    const float* data_ptr() const { return data; }
+    float* data_ptr() { return data; }
+
     Matrix4x4 operator*(const Matrix4x4& other) const {
         Matrix4x4 result;
 
@@ -249,7 +252,51 @@ public:
         return det;
     }
 
- 
+    Matrix4x4 Matrix4x4RotationX(float angle) {
+        float c = cosf(angle);
+        float s = sinf(angle);
+
+        Matrix4x4 m = {};
+        m(0, 0) = 1.0f;
+        m(1, 1) = c;
+        m(1, 2) = s;
+        m(2, 1) = -s;
+        m(2, 2) = c;
+        m(3, 3) = 1.0f;
+        return m;
+    }
+
+    Matrix4x4 Matrix4x4RotationY(float angle) {
+        float c = cosf(angle);
+        float s = sinf(angle);
+
+        Matrix4x4 m = {};
+        m(0, 0) = c;
+        m(0, 2) = -s;
+        m(1, 1) = 1.0f;
+        m(2, 0) = s;
+        m(2, 2) = c;
+        m(3, 3) = 1.0f;
+        return m;
+    }
+
+    Matrix4x4 Matrix4x4RotationZ(float angle) {
+        float c = cosf(angle);
+        float s = sinf(angle);
+
+        Matrix4x4 m = {};
+        m(0, 0) = c;
+        m(0, 1) = s;
+        m(1, 0) = -s;
+        m(1, 1) = c;
+        m(2, 2) = 1.0f;
+        m(3, 3) = 1.0f;
+        return m;
+    }
+
+    Matrix4x4 Matrix4x4RotationRollPitchYaw(float pitch, float yaw, float roll) {
+        return Matrix4x4RotationX(roll) * Matrix4x4RotationY(pitch) * Matrix4x4RotationZ(yaw);
+    }
 
     void setIdentity() {
         memset(data, 0, sizeof(data));

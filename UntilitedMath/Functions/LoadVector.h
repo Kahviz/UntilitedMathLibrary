@@ -35,7 +35,3 @@ inline Vector2 Vector4ToVector2(const Vector4& a) {
 inline Vector3 Vector4ToVector3(const Vector4& a) {
     return Vector3(a.x(), a.y(), a.z());
 }
-
-inline Vector4 Vector4ToVector4(const Vector4& a) {
-    return Vector4(a.x(), a.y(), a.z(), a.w());
-}

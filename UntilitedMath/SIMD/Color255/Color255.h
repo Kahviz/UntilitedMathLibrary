@@ -3,6 +3,13 @@
 #include <cmath>
 #include <algorithm>
 
+#ifdef min
+#undef min
+#endif
+#ifdef max
+#undef max
+#endif
+
 class Color255 {
 private:
     alignas(16) int data[4];

@@ -1,5 +1,6 @@
 #pragma once
 #include "../SIMD/Vector3/Vector3.h"
+#include "../SIMD/Matrix4x4/Matrix4x4.h"
 
 Matrix4x4 Matrix4x4LookAtRH(const Vector3& eye, const Vector3& target, const Vector3& worldUp) {
     Vector3 zaxis = Vector3(
@@ -83,3 +84,4 @@ Matrix4x4 Matrix4x4PerspectiveFovRH(float fovRadians, float aspect, float nearZ,
 
     return m;
 }
+
