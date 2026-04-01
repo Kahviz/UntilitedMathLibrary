@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <cstdlib>
 
-#include "../Vector4/Vector4.h"
+class Vector4;
 
 #ifndef NOMINMAX
 #define NOMINMAX
