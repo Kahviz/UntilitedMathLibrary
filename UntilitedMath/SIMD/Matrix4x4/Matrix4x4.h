@@ -320,6 +320,15 @@ public:
         memset(data, 0, sizeof(data));
         data[0] = data[5] = data[10] = data[15] = 1.0f;
     }
+    Matrix4x4 transposed() const {
+        Matrix4x4 result;
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                result(col, row) = (*this)(row, col);
+            }
+        }
+        return result;
+    }
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Matrix4x4& mat) {
