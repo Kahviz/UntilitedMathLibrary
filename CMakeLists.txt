@@ -9,42 +9,42 @@ project ("BoronMathLibrary")
 
 add_executable(BoronMathLibrary 
 	#CPU
-	UntilitedMathLibrary.cpp
-	UntilitedMathLibrary.h
-	UntilitedMath/UntilitedMath.h
-
-	UntilitedMath/SIMD/Vector3/Vector3.h
-	UntilitedMath/SIMD/Vector4/Vector4.h
-	UntilitedMath/SIMD/Color255/Color255.h
-	UntilitedMath/SIMD/Matrix4x4/Matrix4x4.h
-	UntilitedMath/SIMD/Int2/Int2.h
-	UntilitedMath/Variables.h
+	BoronMathLibrary.cpp
+	BoronMathLibrary.h
+	BoronMath/BoronMath.h
+	
+	BoronMath/SIMD/Vector3/Vector3.h
+	BoronMath/SIMD/Vector4/Vector4.h
+	BoronMath/SIMD/Color255/Color255.h
+	BoronMath/SIMD/Matrix4x4/Matrix4x4.h
+	BoronMath/SIMD/Int2/Int2.h
+	BoronMath/Variables.h
 
 	#Functions
-	UntilitedMath/SIMD/Functions/TransformVector.h
-	UntilitedMath/SIMD/Functions/LoadVector.h
-	UntilitedMath/SIMD/Functions/StoreComponent.h
-	UntilitedMath/SIMD/Functions/TransformNormal.h
-	UntilitedMath/SIMD/Functions/LoadInt.h
-	UntilitedMath/SIMD/Functions/Matrix4x4Functions.h 
-	UntilitedMath/SIMD/Functions/Utils.h
+	BoronMath/SIMD/Functions/TransformVector.h
+	BoronMath/SIMD/Functions/LoadVector.h
+	BoronMath/SIMD/Functions/StoreComponent.h
+	BoronMath/SIMD/Functions/TransformNormal.h
+	BoronMath/SIMD/Functions/LoadInt.h
+	BoronMath/SIMD/Functions/Matrix4x4Functions.h 
+	BoronMath/SIMD/Functions/Utils.h
 
 	#GPU
-	UntilitedMath/GPU/GPUVector2/GPUVector2.h
-	UntilitedMath/GPU/GPUInt3/GPUInt3.h
-	UntilitedMath/GPU/GPUVector3/GPUVector3.h 
-	UntilitedMath/GPU/GPUVector4/GPUVector4.h 
-	UntilitedMath/GPU/GPUMatrix4x4/GPUMatrix4x4.h
+	BoronMath/GPU/GPUVector2/GPUVector2.h
+	BoronMath/GPU/GPUInt3/GPUInt3.h
+	BoronMath/GPU/GPUVector3/GPUVector3.h 
+	BoronMath/GPU/GPUVector4/GPUVector4.h 
+	BoronMath/GPU/GPUMatrix4x4/GPUMatrix4x4.h
 
 	#Functions
-	UntilitedMath/GPU/Functions/StoreGPUComponent.h
-	UntilitedMath/GPU/Functions/LoadGPUInt.h 
-	UntilitedMath/GPU/Functions/TransformGPUNormal.h
+	BoronMath/GPU/Functions/StoreGPUComponent.h
+	BoronMath/GPU/Functions/LoadGPUInt.h 
+	BoronMath/GPU/Functions/TransformGPUNormal.h
 )
 
 target_include_directories(BoronMathLibrary PRIVATE 
 	../SIMD/
-	UntilitedMath/
+	BoronMath/
 	GPU/
 )
 
